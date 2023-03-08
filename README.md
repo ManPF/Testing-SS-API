@@ -7,7 +7,7 @@ In the introduction part important variables are declarated, also, the Smarsheet
 
 ## Methods
 
-### ` get_cell_by_column_name: ` 
+#### ` get_cell_by_column_name: ` 
 takes as parameters, the name of a column and specific row of SS sheet. the function obtains column id using its name, and search the cell value in the row that croos with the specified column.
 
 #### ` summary `:
