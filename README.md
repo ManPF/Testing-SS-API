@@ -17,14 +17,18 @@ builds a summary wich contains the information of the first ` n ` (e.g. 25) page
 receive as parameters, the sheet and the summary of reference.
 
 This method delete all rows that no has an id, after that, takes the sheet row by row  and evaluate the cell values with summary values, if the values ar equal don't take action, but, if are different check if the cell are ` None ` or not. In  the first case (` None ` cells), builds a new row with its appropiate values in the summary. In the second case, replace the cell values with the correct value of summary. Finally, in both cases the method update the rows of sheet.
-At the end, return a ` list ` wich contains, number of rows verfied, number of rows updated and another list with all of books ids in the sheet.
+At the end, return a `list` wich contains, number of rows verfied, number of rows updated and another ` list ` with all of books ids in the sheet.
 
 ### 'append_new_rows':
-takes as parameters, the summary created with ` summary ` and the list of books ids in the sheet returned in ` evaluate_and_update_rows `. 
+takes as parameters, the summary created with ` summary ` and the ` list ` of books ids in the sheet returned in ` evaluate_and_update_rows `. 
 
 first, the method check books ids in the summary that are not in the sheet, after, finds the values based on the `id_to_append ` and appends to the sheet, finally, update the sheet with `.add_rows`.
 
 Returns the updated sheet.
 
+## Test
+
+## 'if __name__ == "__main__"':
+structure used to execute all script, here all methods are called and tested, also contains indicative messages wich shows the start, progress and final of the execution.
 
 
