@@ -7,11 +7,11 @@ In the introduction part important variables are declarated, also, the Smarsheet
 
 ## Methods
 
-### 'get_cell_by_column_name': 
+#### 'get_cell_by_column_name': 
 takes as parameters, the name of a column and specific row of SS sheet. the function obtains column id using its name, and search the cell value in the row that croos with the specified column.
 
 ### 'summary':
-builds a summary wich contains the information of the first ` n ` pages of books in the Gutendex server, based on its keys(e.g, id, authors, title...) and returns a summary structure with the information specified.
+builds a summary wich contains the information of the first ` n ` pages of books in the Gutendex server, based on its keys (e.g, id, authors, title...) and returns a summary structure with the information specified.
 
 ### 
 
