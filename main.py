@@ -6,13 +6,13 @@ import requests
 import pandas as pd
 import openpyxl
 
-workspace = 123456789011 #WS ID
-sheetid=123456789011 #Sheet ID
+workspace = 5040271328077700 #WS ID
+sheetid=4469728958801796 #Sheet ID
 _dir = os.path.dirname(os.path.abspath(__file__))
 
 column_map = {} #dict of columns ids as a value and its names as a key
 
-with open(_dir + "/myfile.txt") as token: #import the token of SS replacing "/myfile.txt" for the .txt file with the token saved.
+with open(_dir + "/myfile.txt") as token: #import the token of SS
     os.environ['SMARTSHEET_ACCESS_TOKEN'] = token.read()
     #print(token.read())
 
@@ -56,16 +56,18 @@ def evaluate_and_update_row(sheet, dict):
     rows_ver = 0
     rows_upd = 0
     id_in_sheet = []
+    unique_ids=[]
 
     for source_row in sheet.rows: #access to 'n' row by position & give it to 'evaluate_and_update_row' function, return # columns updated & verfied
         #print(len(sheet.rows))
-        rows_ver += 1
-        status_cell = get_cell_by_column_name(source_row, 'Column1')
-        status_value=status_cell.display_value
-        if status_value is None:
+        rows_ver += 1 
+        id_cell = get_cell_by_column_name(source_row, 'Column1')
+        id_value=id_cell.display_value
+        if id_value is None or int(id_value) in id_in_sheet or int(id_value) not in list(dict.keys()):
+            print("Rows with None or duplicated ids deleted ")
             smart.Sheets.delete_rows(sheetid,source_row.id)
         else:
-            id_in_sheet.append(int(status_value))
+            id_in_sheet.append(int(id_value))
             #VERIFICATION
             for column in list(column_map.keys()): #making a list of 'column_map' keys
                 #print(list(column_map.keys())[2])
@@ -84,10 +86,9 @@ def evaluate_and_update_row(sheet, dict):
                         rows_upd += 1
                         if status_value is not None:
                             # Build new cell value
-                            rows_upd += 1
                             new_cell = smart.models.Cell()
                             new_cell.column_id = column_map.get(column)
-                            new_cell.value = testing
+                            new_cell.value = str(testing)
 
                             # Build the row to update
                             new_row = smart.models.Row()
