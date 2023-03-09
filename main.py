@@ -6,13 +6,13 @@ import requests
 import pandas as pd
 import openpyxl
 
-workspace = 5040271328077700 #WS ID
-sheetid=4469728958801796 #Sheet ID
+workspace = 123456789 #WS ID
+sheetid=123456789 #Sheet ID
 _dir = os.path.dirname(os.path.abspath(__file__))
 
 column_map = {} #dict of columns ids as a value and its names as a key
 
-with open(_dir + "/myfile.txt") as token: #import the token of SS
+with open(_dir + "/myfile.txt") as token: #import the token of SS, replace /myfile.txt, with the .txt document which you save the token.
     os.environ['SMARTSHEET_ACCESS_TOKEN'] = token.read()
     #print(token.read())
 
